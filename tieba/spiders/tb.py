@@ -7,7 +7,7 @@ from tieba.items import TiebaItem
 class TbSpider(scrapy.Spider):
 	name = 'tb'
 	allowed_domains = ['tieba.baidu.com']
-	keywords = ["薅羊毛"]
+	keywords = ["滴滴","专车","快车","代叫","人脸识别"]
 	regex = re.compile(r'href="/p/(.*?)"')
 
 	def start_requests(self):
@@ -40,7 +40,7 @@ class TbSpider(scrapy.Spider):
 			item['thread_id'] = threadId
 			item['user_id'] = id.split(':')[1].split('}')[0]
 			item['title'] = ','.join(title)
-			item['userName'] = un
+			item['user_name'] = un
 			item['content'] = content.strip()
 			item['created'] = created
 			yield item
